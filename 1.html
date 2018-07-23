@@ -73,8 +73,8 @@
                     img.style.opacity=op.toString();
                     console.log(op);
                     op+=0.1;
-                    if(op>1.0) console.log("???"); //clearInterval(time2);
-                },50);
+                    if(op>1.0) clearInterval(time2);
+                },10);
                // console.log();
                 
                 if(i+1==n/3*3) clearInterval(time1);
