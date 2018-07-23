@@ -15,6 +15,9 @@
         ul{
             list-style: none;
         }
+        img{
+            opacity:0.0;
+        }
     </style>
 </head>
 <body>
@@ -33,22 +36,48 @@
 </body>
 
 <script>
-      //  document.onload=function(){
             var ullist=document.getElementsByTagName("ul");
             var i=0;
             var j=0;
             var n=16;
-            var h=new Array();
+            var h=new Array(3);
+            var img;
+            var img_id;
+            var op=0.0;
             for(var k=0;k<h.length;k++)
                 h[k]=0;
             var time1=setInterval(function(){
-                if(h[0]<h[1]){
-                    if(h[2]h[])
+                if(h[0]<=h[1]){
+                    if(h[2]<h[0]){
+                        j=2;
+                    }
+                    else{ 
+                        j=0
+                        };
                 }
-                ullist[j%3].innerHTML+="<li><img src=\""+i+".jpg\" width=\"200px\"></li>";
+                else if(h[2]<h[1]){
+                    j=2;
+                }
+                else {
+                    j=1;
+                }
+                img_id=i+".jpg";
+                ullist[j].innerHTML+="<li><img src=\""+img_id+"\" id=\""+img_id+"\" width=\"200px\"></li>";
                 i++;
+                img=document.getElementById(img_id);
+                img.onload = function () {
+                op=0.0;
+                h[j]+=this.height;
+                
+                var time2=setInterval(function(){
+                    img.style.opacity=op.toString();
+                    console.log(op);
+                    op+=0.1;
+                    if(op>1.0) console.log("???"); //clearInterval(time2);
+                },50);
+               // console.log();
+                
                 if(i+1==n/3*3) clearInterval(time1);
-            },1000);
-       // }
-        //<li><img src="/213.jpg" width="200px" alt=""></li>
+                }
+            },300);
     </script>
