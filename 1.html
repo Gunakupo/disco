@@ -8,6 +8,9 @@
     -->
     <meta name="keyword" content="东方">
     <style>
+        *{
+            z-index: 0;
+        }
         div{
             float: left;
             position: relative;
@@ -18,9 +21,28 @@
         img{
             opacity:0.0;
         }
+        .head{
+            position: fixed;
+            height: 100px;
+            width:100%;
+            left: 0;
+            top: 0;
+            background-color: bisque;
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
+    <div class="head">总之是个头</div>
+    <div style="height: 100px;width: 100%"></div>
+    
+    <script>
+        document.onload=function(){
+            window.onmousewheel
+        }
+    
+    </script>
+    
     <div class="left">
         <ul>
         </ul>
@@ -71,7 +93,6 @@
                 
                 var time2=setInterval(function(){
                     img.style.opacity=op.toString();
-                    console.log(op);
                     op+=0.1;
                     if(op>1.0) clearInterval(time2);
                 },10);
